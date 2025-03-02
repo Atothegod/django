@@ -1,8 +1,10 @@
 from django.contrib import admin
+from .models import Seller
 
-# Register your models here.
-from django.contrib import admin
-from .models import Seller, Product
+# Register Seller model to admin panel
+class SellerAdmin(admin.ModelAdmin):
+    list_display = ('user', 'shop_name')  # แสดง user และ shop_name ในหน้าแสดงผล
+    search_fields = ('shop_name',)  # ค้นหาจาก shop_name
+    list_filter = ('user',)  # ฟิลเตอร์จาก user
 
-admin.site.register(Seller)   # ทำให้ Seller ปรากฏใน Admin Panel
-admin.site.register(Product)  # ทำให้ Product ปรากฏใน Admin Panel
+admin.site.register(Seller, SellerAdmin)

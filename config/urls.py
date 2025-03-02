@@ -17,10 +17,19 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
+from . import views
+from django.contrib import admin
+from django.urls import include, path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/users/', include('users.urls')),
-    path('api/sellers/', include('sellers.urls')),
-    path('', TemplateView.as_view(template_name='home.html')),  # เพิ่ม URL สำหรับหน้าแรก
+    path('cart/', include('cart.urls', namespace='cart')),
+    path('sellers/', include('sellers.urls', namespace='sellers')),
+    path('users/', include('users.urls', namespace='users')),
+    path('chat/', include('chat.urls', namespace='chat')),
+    path('searching/', include('searching.urls', namespace='searching')),
+    path('analytics/', include('analytics.urls', namespace='analytics')),
+    path('adminpanel/', include('adminpanel.urls', namespace='adminpanel')),
+    path('', views.home, name='home'),  # เพิ่ม path สำหรับหน้าแรก
 ]
+

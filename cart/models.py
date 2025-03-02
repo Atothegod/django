@@ -1,14 +1,35 @@
 from django.db import models
-from django.contrib.auth.models import User
-from django.conf import settings
-from searching.models import Product
+from users.models import User
 
-# Create your models here.
 class ShoppingCart(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    products = models.ManyToManyField(Product, through='CartItem')
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
-class CartItem(models.Model):
-    cart = models.ForeignKey(ShoppingCart, on_delete=models.CASCADE)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    quantity = models.IntegerField(default=1)
+    def addItem(self):
+        pass
+
+    def removeItem(self):
+        pass
+
+    def viewCart(self):
+        pass
+
+class PaymentSystem(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def processPayment(self):
+        pass
+
+    def generateInvoice(self):
+        pass
+
+class OrderSystem(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def placeOrder(self):
+        pass
+
+    def trackOrder(self):
+        pass
+
+    def cancelOrder(self):
+        pass

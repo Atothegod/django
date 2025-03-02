@@ -1,15 +1,11 @@
-from django.urls import path, include
-from rest_framework.routers import DefaultRouter
-from .views import UserViewSet
+from django.urls import path
+from . import views
 
-router = DefaultRouter()
-router.register(r'users', UserViewSet)
+app_name = 'users'
 
 urlpatterns = [
-    path('', include(router.urls)),
-]
-from .views import HomeView
-
-urlpatterns = [
-    path('', HomeView.as_view(), name='home'),
+    path('signup/', views.sign_up, name='sign_up'),  # URL สำหรับการสมัครสมาชิก
+    path('login/', views.login, name='login'),  # URL สำหรับการเข้าสู่ระบบ
+    path('profile_user/', views.view_profile, name='view_profile'),  # URL สำหรับการดูโปรไฟล์
+    path('giftcard/', views.manage_gift_card, name='manage_gift_card'),  # URL สำหรับการจัดการบัตรของขวัญ
 ]

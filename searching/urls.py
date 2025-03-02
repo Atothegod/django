@@ -2,13 +2,9 @@
 from django.urls import path
 from . import views
 
-urlpatterns = [
-    # ตัวอย่าง URL patterns
-    path('', views.search_view, name='search_view'),
-]
-from django.urls import path
-from .views import HomeView
+app_name = 'searching'
 
 urlpatterns = [
-    path('', HomeView.as_view(), name='home'),
+    path('search/', views.search_view, name='search_view'),
+    path('filter/', views.filter_view, name='filter_view'),
 ]

@@ -1,14 +1,11 @@
-# sellers/urls.py
 from django.urls import path
 from . import views
 
-urlpatterns = [
-    # ตัวอย่าง URL patterns
-    path('', views.some_view, name='some_view'),
-]
-from django.urls import path
-from .views import HomeView
+app_name = 'sellers'
 
 urlpatterns = [
-    path('', HomeView.as_view(), name='home'),
+    path('register/', views.register_seller, name='register_seller'),
+    path('profile_seller/', views.manage_profile, name='manage_profile'),
+    path('products/', views.manage_products, name='manage_products'),
+    path('point/', views.manage_point, name='manage_point'),
 ]

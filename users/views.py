@@ -1,14 +1,18 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 
-# Create your views here.
-from rest_framework import viewsets
-from .models import User
-from .serializers import UserSerializer
-from django.views.generic import TemplateView
+# ฟังก์ชันสำหรับการสมัครสมาชิก
+def sign_up(request):
+    return HttpResponse("Sign Up Page")
 
-class HomeView(TemplateView):
-    template_name = "home.html"
+# ฟังก์ชันสำหรับการเข้าสู่ระบบ
+def login(request):
+    return HttpResponse("Login Page")
 
-class UserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
+# ฟังก์ชันสำหรับการดูโปรไฟล์
+def view_profile(request):
+    return HttpResponse("Profile Page")
+
+# ฟังก์ชันสำหรับการจัดการบัตรของขวัญ
+def manage_gift_card(request):
+    return HttpResponse("Manage Gift Card Page")
